@@ -133,8 +133,6 @@ def page2():
         start = '2010-01-01'
         end = date
         df = yf.download(user_input, start=start, end=end)
-        st.write("Fetched data:")
-        st.dataframe(df)
 
         data_training = df['Close'].iloc[:int(len(df) * 0.70)]
         data_testing = df['Close'].iloc[int(len(df) * 0.70):]
@@ -160,8 +158,6 @@ def page2():
         y_predicted = model.predict(x_test)
         scaler = scaler.scale_  # Invert the scaling
         predicted_price = y_predicted * (1 / scaler[0])  # Apply inverse scaling
-
-        st.write("Predicted price:", predicted_price)
         return predicted_price[0][0]
 
     # User input for stock ticker
