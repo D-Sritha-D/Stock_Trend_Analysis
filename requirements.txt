@@ -1,8 +1,9 @@
 matplotlib
-numpy==1.21.5
+numpy==1.24.4
 pandas
 yfinance
 Keras
 streamlit
 scikit-learn
 tensorflow
+protobuf==3.20.0
