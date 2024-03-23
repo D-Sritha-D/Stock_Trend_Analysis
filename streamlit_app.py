@@ -74,11 +74,10 @@ def page1():
         st.pyplot(fig)
 
         # Splitting data into training and testing
-        data_training = df['Close'].iloc[:int(len(df) * 0.70)]
-        data_testing = df['Close'].iloc[int(len(df) * 0.70):]
+        data_training=pd.DataFrame(df['Close'][0:int(len(df)*0.70)])
+        data_testing=pd.DataFrame(df['Close'][int(len(df)*0.70): int(len(df))])
 
         scaler = MinMaxScaler(feature_range=(0, 1))
-        data_training_array = scaler.fit_transform(np.array(data_training).reshape(-1, 1))
 
         # Load model
         model = load_model('stock_price.h5')
@@ -134,11 +133,10 @@ def page2():
         end = date
         df = yf.download(user_input, start=start, end=end)
 
-        data_training = df['Close'].iloc[:int(len(df) * 0.70)]
-        data_testing = df['Close'].iloc[int(len(df) * 0.70):]
+        data_training=pd.DataFrame(df['Close'][0:int(len(df)*0.70)])
+        data_testing=pd.DataFrame(df['Close'][int(len(df)*0.70): int(len(df))])
 
         scaler = MinMaxScaler(feature_range=(0, 1))
-        data_training_array = scaler.fit_transform(np.array(data_training).reshape(-1, 1))
 
         # Load model
         model = load_model('stock_price.h5')
