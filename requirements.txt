@@ -7,4 +7,3 @@ streamlit
 scikit-learn
 tensorflow
 protobuf==3.20.0
-pickle
