@@ -8,6 +8,7 @@ from sklearn.preprocessing import MinMaxScaler
 import matplotlib.dates as mdates
 import datetime
 import tensorflow
+import pickle
 
 def page1():
     st.title(f'Closing Stock Price Analysis')
@@ -81,8 +82,7 @@ def page1():
         scaler=MinMaxScaler(feature_range=(0,1))
 
         # Load model
-        model = tensorflow.keras.models.load_model('stock_price.h5', compile=False)
-        model.compile()
+        model = pickle.load(open('stock_price.pkl,  'rb')
 
         # Testing part
         past_100_days = data_training
@@ -143,8 +143,7 @@ def page2():
         scaler=MinMaxScaler(feature_range=(0,1))
 
         # Load model
-        model = tensorflow.keras.models.load_model('stock_price.h5', compile=False)
-        model.compile()
+        model = pickle.load(open('stock_price.pkl,  'rb')
 
         past_100_days = data_training
         final_df = past_100_days.append(data_testing, ignore_index=True)
