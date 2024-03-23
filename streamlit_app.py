@@ -80,7 +80,8 @@ def page1():
         scaler=MinMaxScaler(feature_range=(0,1))
 
         # Load model
-        model = load_model('stock_price.h5')
+        model = tensorflow.keras.models.load_model('stock_price.h5', compile=False)
+        model.compile()
 
         # Testing part
         past_100_days = data_training
