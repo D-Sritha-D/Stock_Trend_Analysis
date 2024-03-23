@@ -19,7 +19,7 @@ This Streamlit application enables users to analyze stock trends and predict usi
 
 ## Website Link
 
-To access the Streamlit application, visit [Stock Trend Analysis App](https://stock-price-prediction-fyp.streamlit.app/)
+To access the Streamlit application, visit [Stock Trend Analysis App](https://stock-trend-analysis-b5.streamlit.app/)
 ---
 
 **Disclaimer:** This application is for educational and informational purposes only. It does not constitute financial advice. Users should conduct their own research and consult with a financial professional before making any investment decisions.
