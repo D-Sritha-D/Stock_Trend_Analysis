@@ -7,6 +7,7 @@ import streamlit as st
 from sklearn.preprocessing import MinMaxScaler
 import matplotlib.dates as mdates
 import datetime
+import tensorflow
 
 def page1():
     st.title(f'Closing Stock Price Analysis')
@@ -142,7 +143,8 @@ def page2():
         scaler=MinMaxScaler(feature_range=(0,1))
 
         # Load model
-        model = load_model('stock_price.h5')
+        model = tensorflow.keras.models.load_model('stock_price.h5', compile=False)
+        model.compile()
 
         past_100_days = data_training
         final_df = past_100_days.append(data_testing, ignore_index=True)
