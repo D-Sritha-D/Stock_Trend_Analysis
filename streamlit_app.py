@@ -27,14 +27,14 @@ def page1():
     st.subheader('Stock Attributes Description')
 
     st.markdown("""
-        
+
         - **Date:** This is the date of the trading day.
         - **Open:** The price of the stock at the opening of the trading day.
         - **High:** The highest price of the stock during the trading day.
         - **Low:** The lowest price of the stock during the trading day.
         - **Close:** The price of the stock at the closing of the trading day.
         - **Adj Close:** The adjusted closing price.
-        - **Volume:** The number of shares traded during the trading day. 
+        - **Volume:** The number of shares traded during the trading day.
         """)
 
     # Check if the DataFrame is empty (no data retrieved)
@@ -77,7 +77,7 @@ def page1():
         data_training=pd.DataFrame(df['Close'][0:int(len(df)*0.70)])
         data_testing=pd.DataFrame(df['Close'][int(len(df)*0.70): int(len(df))])
 
-        scaler = MinMaxScaler(feature_range=(0, 1))
+        scaler=MinMaxScaler(feature_range=(0,1))
 
         # Load model
         model = load_model('stock_price.h5')
@@ -132,11 +132,13 @@ def page2():
         start = '2010-01-01'
         end = date
         df = yf.download(user_input, start=start, end=end)
+        st.write("Fetched data:")
+        st.dataframe(df)
 
         data_training=pd.DataFrame(df['Close'][0:int(len(df)*0.70)])
         data_testing=pd.DataFrame(df['Close'][int(len(df)*0.70): int(len(df))])
 
-        scaler = MinMaxScaler(feature_range=(0, 1))
+        scaler=MinMaxScaler(feature_range=(0,1))
 
         # Load model
         model = load_model('stock_price.h5')
@@ -156,6 +158,8 @@ def page2():
         y_predicted = model.predict(x_test)
         scaler = scaler.scale_  # Invert the scaling
         predicted_price = y_predicted * (1 / scaler[0])  # Apply inverse scaling
+
+        st.write("Predicted price:", predicted_price)
         return predicted_price[0][0]
 
     # User input for stock ticker
